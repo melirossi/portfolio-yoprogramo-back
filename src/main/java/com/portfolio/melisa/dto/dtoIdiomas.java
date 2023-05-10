@@ -3,11 +3,14 @@ package com.portfolio.melisa.dto;
 import javax.validation.constraints.NotBlank;
 
 public class dtoIdiomas {
+    
+    // Atributos:
     @NotBlank
     private String nombreI;
     @NotBlank
     private String descripI;
 
+    // Constructores:
     public dtoIdiomas() {
     }
 
@@ -15,7 +18,8 @@ public class dtoIdiomas {
         this.nombreI = nombreI;
         this.descripI = descripI;
     }
-
+    
+    // Getters and Setters:
     public String getNombreI() {
         return nombreI;
     }
@@ -31,7 +35,6 @@ public class dtoIdiomas {
     public void setDescripI(String descripI) {
         this.descripI = descripI;
     }
-    
-    
+        
 }
 

@@ -3,6 +3,8 @@ package com.portfolio.melisa.dto;
 import javax.validation.constraints.NotBlank;
 
 public class dtoProyectos {
+    
+    // Atributos
     @NotBlank
     private String imagenProy;
     @NotBlank
@@ -16,6 +18,7 @@ public class dtoProyectos {
     @NotBlank
     private String urlProy;
 
+    // Constructores:
     public dtoProyectos() {
     }
 
@@ -28,6 +31,7 @@ public class dtoProyectos {
         this.urlProy = urlProy;
     }
 
+    // Getters and Setters:
     public String getImagenProy() {
         return imagenProy;
     }
@@ -74,7 +78,5 @@ public class dtoProyectos {
 
     public void setUrlProy(String urlProy) {
         this.urlProy = urlProy;
-    }
-    
-    
+    }        
 }
