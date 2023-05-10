@@ -40,7 +40,7 @@ public class Experiencia {
         return imageE;
     }
 
-    public void setImageE(String image) {
+    public void setImageE(String imageE) {
         this.imageE = imageE;
     }
 
