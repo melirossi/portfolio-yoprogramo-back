@@ -21,17 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/habblandas")
+
+// Connection with front:
 @CrossOrigin(origins = {"https://melisa-portfolio.web.app","http://localhost:4200"})
+
 public class CHabilidadesBlandas {
+    
+    // Llamar servicio:
     @Autowired
     SHabilidadesBlandas sHabilidadesBlandas;
     
+    // Obtener lista de habilidades blandas:
     @GetMapping("/lista")
     public ResponseEntity<List<HabilidadesBlandas>> list(){
         List<HabilidadesBlandas> list = sHabilidadesBlandas.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    // Obtener habilidad blanda por ID:
     @GetMapping("/detail/{id}")
     public ResponseEntity<HabilidadesBlandas> getById(@PathVariable("id") int id){
         if(!sHabilidadesBlandas.existsById(id)){
@@ -41,6 +48,7 @@ public class CHabilidadesBlandas {
         return new ResponseEntity(habilidadesBlandas, HttpStatus.OK);
     }
     
+    // Eliminar habilidad blanda por ID:
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         if(!sHabilidadesBlandas.existsById(id)){
@@ -50,6 +58,7 @@ public class CHabilidadesBlandas {
         return new ResponseEntity(new Mensaje("Habilidad Blanda eliminada"), HttpStatus.OK);
     }
     
+    // Crear habilidad blanda:
     @PostMapping("/create")
     public ResponseEntity<?> create (@RequestBody dtoHabilidadesBlandas dtohabilidadesblandas){
         if(StringUtils.isBlank(dtohabilidadesblandas.getNombreHB())){
@@ -63,6 +72,7 @@ public class CHabilidadesBlandas {
         return new ResponseEntity(new Mensaje("Habilidad Blanda creada"), HttpStatus.OK);        
     }
     
+    // Modificar habilidad blanda por ID:
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoHabilidadesBlandas dtohabilidadesblandas){
         if(!sHabilidadesBlandas.existsById(id)){

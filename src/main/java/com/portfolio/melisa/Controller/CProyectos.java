@@ -21,18 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/proyectos")
+
+// Connection with front:
 @CrossOrigin(origins = {"https://melisa-portfolio.web.app","http://localhost:4200"})
+
 public class CProyectos {
     
+    // Llamar servicio:
     @Autowired
     SProyectos sProyectos;
     
+    // Obtener lista de proyectos:
     @GetMapping("/lista")
     public ResponseEntity<List<Proyectos>> list(){
         List<Proyectos> list = sProyectos.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    // Obtener proyecto por ID:
     @GetMapping("/detail/{id}")
     public ResponseEntity<Proyectos> getById(@PathVariable("id") int id){
         if(!sProyectos.existsById(id)){
@@ -42,6 +48,7 @@ public class CProyectos {
         return new ResponseEntity(proyectos, HttpStatus.OK);
     }
     
+    // Eliminar proyecto por ID:
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         if(!sProyectos.existsById(id)){
@@ -51,6 +58,7 @@ public class CProyectos {
         return new ResponseEntity(new Mensaje("Proyecto eliminado"), HttpStatus.OK);
     }
     
+    // Crear proyecto:
     @PostMapping("/create")
     public ResponseEntity<?> create (@RequestBody dtoProyectos dtoproyectos){
         if(StringUtils.isBlank(dtoproyectos.getTituloProy())){
@@ -64,6 +72,7 @@ public class CProyectos {
         return new ResponseEntity(new Mensaje("Proyecto creado"), HttpStatus.OK);        
     }
     
+    // Modificar proyecto por ID:
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoProyectos dtoproyectos){
         if(!sProyectos.existsById(id)){

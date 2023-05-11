@@ -19,18 +19,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/personas")
+
+// Connection with front:
 @CrossOrigin(origins = {"https://melisa-portfolio.web.app","http://localhost:4200"})
+
 public class PersonaController {
         
+    // Llamar servicio:
     @Autowired
     ImpPersonaService personaService;
     
+    // Obtener lista de personas:
     @GetMapping("/lista")
     public ResponseEntity<List<Persona>> list(){
         List<Persona> list = personaService.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    // Obtener persona por ID:
     @GetMapping("/detail/{id}")
     public ResponseEntity<Persona> getById(@PathVariable("id") int id){
         if(!personaService.existsById(id)){
@@ -40,6 +46,7 @@ public class PersonaController {
         return new ResponseEntity(persona, HttpStatus.OK);
     }
       
+    // Modificar persona:
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoPersona dtopersona){
         if(!personaService.existsById(id)){
