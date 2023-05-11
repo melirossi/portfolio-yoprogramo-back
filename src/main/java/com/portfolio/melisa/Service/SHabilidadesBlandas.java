@@ -13,33 +13,41 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class SHabilidadesBlandas {
     
+    // Llamar repositorio:
     @Autowired
     RHabilidadesBlandas rHabilidadesBlandas;
     
+    // Obtener lista de habilidades blandas:
     public List<HabilidadesBlandas> list(){
         return rHabilidadesBlandas.findAll();
     }
     
+    // Obtener habilidad blanda por ID:
     public Optional<HabilidadesBlandas> getOne(int id){
         return rHabilidadesBlandas.findById(id);
     }
     
+    // Obtener habilidad blanda por nombre:
     public Optional<HabilidadesBlandas> getByNombreHB(String nombreHB){
         return rHabilidadesBlandas.findByNombreHB(nombreHB);
     }
     
+    // Crear habilidad blanda:
     public void save(HabilidadesBlandas habilidadesBlandas){
        rHabilidadesBlandas.save(habilidadesBlandas);
     }
     
+    // Eliminar habilidad blanda por ID:
     public void delete(int id){
         rHabilidadesBlandas.deleteById(id);
     }
     
+    // Buscar si existe habilidad blanda por ID:
     public boolean existsById(int id){
         return rHabilidadesBlandas.existsById(id);
     }
     
+    // Buscar si existe habilidad blanda por nombre:
     public boolean existsByNombreHB(String nombreHB){
         return rHabilidadesBlandas.existsByNombreHB(nombreHB);
     }
