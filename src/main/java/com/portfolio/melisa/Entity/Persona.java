@@ -8,6 +8,9 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Persona {
+    
+    // Atributos: 
+    
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,7 +28,7 @@ public class Persona {
 
     private String img;
     
-    private String logo;
+    private String logo;  // Opcional (no implementado en el front para cambiar logo de ArgPrograma)
     
     @NotNull
     private String ubicacion;
@@ -37,6 +40,8 @@ public class Persona {
     
     private String github;
    
+    // Constructores:
+    
     public Persona() {
     }
 
@@ -52,6 +57,8 @@ public class Persona {
         this.github = github;
     }
 
+    // Getters and Setters:
+    
     public int getId() {
         return id;
     }

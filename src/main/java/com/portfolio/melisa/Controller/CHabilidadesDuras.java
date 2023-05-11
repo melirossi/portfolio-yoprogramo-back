@@ -19,21 +19,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/habduras")
+
+// Connection with front:
 @CrossOrigin(origins = {"https://melisa-portfolio.web.app","http://localhost:4200"})
+
 public class CHabilidadesDuras {
     
+    // Llamar servicio:
     @Autowired
     SHabilidadesDuras sHabilidadesDuras;
     
+    // Obtener lista de habilidades duras:
     @GetMapping("/lista")
     public ResponseEntity<List<HabilidadesDuras>> list(){
         List<HabilidadesDuras> list = sHabilidadesDuras.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    // Obtener habilidad dura por ID:
     @GetMapping("/detail/{id}")
     public ResponseEntity<HabilidadesDuras> getById(@PathVariable("id") int id){
         if(!sHabilidadesDuras.existsById(id)){
@@ -43,6 +48,7 @@ public class CHabilidadesDuras {
         return new ResponseEntity(habilidadesDuras, HttpStatus.OK);
     }
     
+    // Eliminar habilidad dura por ID:
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         if(!sHabilidadesDuras.existsById(id)){
@@ -52,6 +58,7 @@ public class CHabilidadesDuras {
         return new ResponseEntity(new Mensaje("Habilidad Dura eliminada"), HttpStatus.OK);
     }
     
+    // Crear habilidad dura:
     @PostMapping("/create")
     public ResponseEntity<?> create (@RequestBody dtoHabilidadesDuras dtohabilidadesduras){
         if(StringUtils.isBlank(dtohabilidadesduras.getNombreHD())){
@@ -65,6 +72,7 @@ public class CHabilidadesDuras {
         return new ResponseEntity(new Mensaje("Habilidad Dura creada"), HttpStatus.OK);        
     }
     
+    // Modificar habilidad dura por ID:
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoHabilidadesDuras dtohabilidadesduras){
         if(!sHabilidadesDuras.existsById(id)){

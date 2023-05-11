@@ -8,6 +8,8 @@ import javax.persistence.Id;
 @Entity
 public class Experiencia {
     
+    // Atributos:
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,6 +19,8 @@ public class Experiencia {
     private String nombreE;
     private String descripcionE;
 
+    // Constructores:
+    
     public Experiencia() {
     }
 
@@ -28,6 +32,8 @@ public class Experiencia {
         this.descripcionE = descripcionE;
     }
 
+    // Getters y Setters:
+    
     public int getId() {
         return id;
     }

@@ -3,11 +3,14 @@ package com.portfolio.melisa.dto;
 import javax.validation.constraints.NotBlank;
 
 public class dtoHabilidadesBlandas {
+    
+    // Atributos:
     @NotBlank
     private String nombreHB;
     @NotBlank
     private String descripHB;
 
+    // Constructores:
     public dtoHabilidadesBlandas() {
     }
 
@@ -16,6 +19,7 @@ public class dtoHabilidadesBlandas {
         this.descripHB = descripHB;
     }
 
+    // Getters and Setters:
     public String getNombreHB() {
         return nombreHB;
     }

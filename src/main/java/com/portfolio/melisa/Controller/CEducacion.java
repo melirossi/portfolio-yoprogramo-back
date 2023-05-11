@@ -21,17 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/educacion")
+
+// Connection with front:
 @CrossOrigin(origins = {"https://melisa-portfolio.web.app","http://localhost:4200"})
+
 public class CEducacion {
+    
+    // Llamar servicio:
     @Autowired
     SEducacion sEducacion;
     
+    // Obtener lista de educacion:
     @GetMapping("/lista")
     public ResponseEntity<List<Educacion>> list(){
         List<Educacion> list = sEducacion.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    // Obtener educacion por ID:    
     @GetMapping("/detail/{id}")
     public ResponseEntity<Educacion> getById(@PathVariable("id") int id){
         if(!sEducacion.existsById(id)){
@@ -41,6 +48,7 @@ public class CEducacion {
         return new ResponseEntity(educacion, HttpStatus.OK);
     }
     
+    // Eliminar educacion por ID:
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         if(!sEducacion.existsById(id)){
@@ -50,6 +58,7 @@ public class CEducacion {
         return new ResponseEntity(new Mensaje("Educacion eliminada"), HttpStatus.OK);
     }
     
+    // Crear educacion:
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoEducacion dtoeducacion){
         if(StringUtils.isBlank(dtoeducacion.getCursoEdu())){
@@ -63,6 +72,7 @@ public class CEducacion {
         return new ResponseEntity(new Mensaje("Educación creada"), HttpStatus.OK);
     }
     
+    // Modificar educacion por ID:
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoEducacion dtoeducacion){
         if(!sEducacion.existsById(id)){

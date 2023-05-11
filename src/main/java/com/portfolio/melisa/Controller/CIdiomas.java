@@ -1,6 +1,5 @@
 package com.portfolio.melisa.Controller;
 
-
 import com.portfolio.melisa.Entity.Idiomas;
 import com.portfolio.melisa.Security.Controller.Mensaje;
 import com.portfolio.melisa.Service.SIdiomas;
@@ -22,18 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/idiomas")
+
+// Connection with front:
 @CrossOrigin(origins = {"https://melisa-portfolio.web.app","http://localhost:4200"})
+
 public class CIdiomas {
     
+    // Llamar servicio:
     @Autowired
     SIdiomas sIdiomas;
     
+    // Obtener lista de idiomas:
     @GetMapping("/lista")
     public ResponseEntity<List<Idiomas>> list(){
         List<Idiomas> list = sIdiomas.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    // Obtener idioma por ID:
     @GetMapping("/detail/{id}")
     public ResponseEntity<Idiomas> getById(@PathVariable("id") int id){
         if(!sIdiomas.existsById(id)){
@@ -43,6 +48,7 @@ public class CIdiomas {
         return new ResponseEntity(idiomas, HttpStatus.OK);
     }
     
+    // Eliminar idioma por ID:
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         if(!sIdiomas.existsById(id)){
@@ -52,6 +58,7 @@ public class CIdiomas {
         return new ResponseEntity(new Mensaje("Idioma eliminado"), HttpStatus.OK);
     }
     
+    // Crear idioma:
     @PostMapping("/create")
     public ResponseEntity<?> create (@RequestBody dtoIdiomas dtoidiomas){
         if(StringUtils.isBlank(dtoidiomas.getNombreI())){
@@ -65,6 +72,7 @@ public class CIdiomas {
         return new ResponseEntity(new Mensaje("Idioma creada"), HttpStatus.OK);        
     }
     
+    // Modificar idioma por ID:
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoIdiomas dtoidiomas){
         if(!sIdiomas.existsById(id)){

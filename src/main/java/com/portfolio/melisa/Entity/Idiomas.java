@@ -8,12 +8,16 @@ import javax.persistence.Id;
 @Entity
 public class Idiomas {
     
+    // Atributos:
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombreI;
     private String descripI;
 
+    // Constructores: 
+    
     public Idiomas() {
     }
 
@@ -22,6 +26,8 @@ public class Idiomas {
         this.descripI = descripI;
     }
 
+    // Getters y Setters:
+    
     public int getId() {
         return id;
     }

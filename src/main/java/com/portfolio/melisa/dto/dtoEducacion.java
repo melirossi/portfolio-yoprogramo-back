@@ -3,6 +3,8 @@ package com.portfolio.melisa.dto;
 import javax.validation.constraints.NotBlank;
 
 public class dtoEducacion {
+    
+    // Atributos:
     @NotBlank
     private String imageEdu;
     @NotBlank
@@ -14,6 +16,7 @@ public class dtoEducacion {
     @NotBlank
     private String descrpEdu;
 
+    // Constructores:
     public dtoEducacion() {
     }
 
@@ -25,6 +28,7 @@ public class dtoEducacion {
         this.descrpEdu = descrpEdu;
     }
 
+    // Getters and Setters:
     public String getImageEdu() {
         return imageEdu;
     }
@@ -64,6 +68,5 @@ public class dtoEducacion {
     public void setDescrpEdu(String descrpEdu) {
         this.descrpEdu = descrpEdu;
     }
-    
-    
+        
 }

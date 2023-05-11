@@ -8,11 +8,15 @@ import javax.persistence.Id;
 @Entity
 public class HabilidadesDuras {
     
+    
+    // Atributos: 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombreHD;
 
+    // Constructores:
+    
     public HabilidadesDuras() {
     }
 
@@ -20,6 +24,8 @@ public class HabilidadesDuras {
         this.nombreHD = nombreHD;
     }
 
+    // Getters y Setters:
+    
     public int getId() {
         return id;
     }

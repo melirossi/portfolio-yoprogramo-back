@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.portfolio.melisa.Security.Service;
 
 import com.portfolio.melisa.Security.Entity.Usuario;
@@ -22,7 +17,6 @@ public class UserDetailsImpl implements UserDetailsService{
     public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
         Usuario usuario = usuarioService.getByNombreUsuario(nombreUsuario).get();
         return UsuarioPrincipal.build(usuario);
-    }
-    
+    }   
     
 }

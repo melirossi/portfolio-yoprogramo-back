@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 
 public class dtoPersona {
 
+    // Atributos:
     @NotBlank
     private String nombre;
     @NotBlank
@@ -24,10 +25,11 @@ public class dtoPersona {
     private String linkedin;
     
     private String github;
-
+    
+    // Constructores:
     public dtoPersona() {
     }
-
+    
     public dtoPersona(String nombre, String apellido, String descripcion, String img, String logo, String ubicacion, String mail, String linkedin, String github) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -40,6 +42,7 @@ public class dtoPersona {
         this.github = github;
     }
 
+    // Getters and Setters:
     public String getNombre() {
         return nombre;
     }

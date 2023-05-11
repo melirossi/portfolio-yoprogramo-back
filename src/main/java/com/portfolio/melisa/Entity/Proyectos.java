@@ -8,6 +8,8 @@ import javax.persistence.Id;
 @Entity
 public class Proyectos {
     
+    // Atributos:
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,7 +19,9 @@ public class Proyectos {
     private String tecnoProy;
     private String fechaProy;
     private String urlProy; 
-
+    
+    // Constructores:
+    
     public Proyectos() {
     }
 
@@ -30,6 +34,8 @@ public class Proyectos {
         this.urlProy = urlProy;
     }
 
+    // Getters y Setters:
+    
     public int getId() {
         return id;
     }

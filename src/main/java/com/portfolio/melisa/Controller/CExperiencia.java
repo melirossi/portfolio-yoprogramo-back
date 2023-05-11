@@ -22,17 +22,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/explab")
+
+// Connection with front:
 @CrossOrigin(origins = {"https://melisa-portfolio.web.app","http://localhost:4200"})
+
 public class CExperiencia {
+    
+    // Llamar servicio:
     @Autowired
     SExperiencia sExperiencia;
     
+    // Obtener lista de experiencia:
     @GetMapping("/lista")
     public ResponseEntity<List<Experiencia>> list(){
         List<Experiencia> list = sExperiencia.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    // Obtener experiencia por ID:
     @GetMapping("/detail/{id}")
     public ResponseEntity<Experiencia> getById(@PathVariable("id") int id){
         if(!sExperiencia.existsById(id))
@@ -41,6 +48,7 @@ public class CExperiencia {
         return new ResponseEntity(experiencia, HttpStatus.OK);
     }
     
+    // Eliminar experiencia por ID:
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!sExperiencia.existsById(id)) {
@@ -50,7 +58,7 @@ public class CExperiencia {
         return new ResponseEntity(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
 
-    
+    // Crear experiencia:    
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoExperiencia dtoexperiencia){      
         if(StringUtils.isBlank(dtoexperiencia.getNombreE()))
@@ -64,6 +72,7 @@ public class CExperiencia {
         return new ResponseEntity(new Mensaje("Experiencia agregada"), HttpStatus.OK);
     }
     
+    // Editar experienica por ID:
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoExperiencia dtoexp){
         //Validamos si existe el ID
